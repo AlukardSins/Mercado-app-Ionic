@@ -1,14 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      MercadoSearch AlukardSins
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label floating>Producto a buscar</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="item"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="search(item)">Buscar</button>
+  <ion-list>
+    <ion-item *ngFor="let itemD of item_data.results">
+        <ion-thumbnail item-start>
+          <img src="{{itemD.thumbnail}}" alt="server-error">
+        </ion-thumbnail>
+        <h2> {{itemD.title}} </h2>
+        <p>$ {{itemD.price}} (COP)</p>
+        <p>Se han vendido: {{itemD.sold_quantity}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
